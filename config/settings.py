@@ -40,7 +40,7 @@ INSTALLED_APPS = [
     
     # global
     'rest_framework',
-
+    
     # local
     # 'apps.contact',
     'apps.news',
