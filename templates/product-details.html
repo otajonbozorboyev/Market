@@ -1,3 +1,5 @@
+{% load static %}
+
 <!doctype html>
 <html class="no-js" lang="zxx">
 
@@ -12,13 +14,13 @@
     <!-- Place favicon.png in the root directory -->
     <link rel="shortcut icon" href="img/favicon.png" type="image/x-icon" />
     <!-- Font Icons css -->
-    <link rel="stylesheet" href="css/font-icons.css">
+    <link rel="stylesheet" href="{% static 'css/font-icons.css' %}">
     <!-- plugins css -->
-    <link rel="stylesheet" href="css/plugins.css">
+    <link rel="stylesheet" href="{% static 'css/plugins.css' %}">
     <!-- Main Stylesheet -->
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
     <!-- Responsive css -->
-    <link rel="stylesheet" href="css/responsive.css">
+    <link rel="stylesheet" href="{% static 'css/responsive.css' %}">
 </head>
 
 <body>
@@ -94,7 +96,7 @@
                     <div class="col">
                         <div class="site-logo-wrap">
                             <div class="site-logo">
-                                <a href="index.html"><img src="img/logo-2.png" alt="Logo"></a>
+                                <a href="{% url 'home' %}"><img src="{% static 'img/logo-2.png' %}" alt="Logo"></a>
                             </div>
                         </div>
                     </div>
@@ -306,7 +308,7 @@
             <div class="mini-cart-product-area ltn__scrollbar">
                 <div class="mini-cart-item clearfix">
                     <div class="mini-cart-img">
-                        <a href="#"><img src="img/product/1.png" alt="Image"></a>
+                        <a href="#"><img src="{{ product_detail.image.url }}" alt="Image"></a>
                         <span class="mini-cart-item-delete"><i class="icon-cancel"></i></span>
                     </div>
                     <div class="mini-cart-info">
@@ -334,16 +336,16 @@
                         <span class="mini-cart-quantity">1 x $92.00</span>
                     </div>
                 </div>
-                <div class="mini-cart-item clearfix">
-                    <div class="mini-cart-img">
-                        <a href="#"><img src="img/product/4.png" alt="Image"></a>
-                        <span class="mini-cart-item-delete"><i class="icon-cancel"></i></span>
-                    </div>
-                    <div class="mini-cart-info">
-                        <h6><a href="#">Orange Fresh Juice</a></h6>
-                        <span class="mini-cart-quantity">1 x $68.00</span>
-                    </div>
-                </div>
+<!--                <div class="mini-cart-item clearfix">-->
+<!--                    <div class="mini-cart-img">-->
+<!--                        <a href="#"><img src="" alt="{{ product_detail.image.url }}"></a>-->
+<!--                        <span class="mini-cart-item-delete"><i class="icon-cancel"></i></span>-->
+<!--                    </div>-->
+<!--                    <div class="mini-cart-info">-->
+<!--                        <h6><a href="#">Orange Fresh Juice</a></h6>-->
+<!--                        <span class="mini-cart-quantity">1 x $68.00</span>-->
+<!--                    </div>-->
+<!--                </div>-->
             </div>
             <div class="mini-cart-footer">
                 <div class="mini-cart-sub-total">
@@ -365,7 +367,7 @@
         <div class="ltn__utilize-menu-inner ltn__scrollbar">
             <div class="ltn__utilize-menu-head">
                 <div class="site-logo">
-                    <a href="index.html"><img src="img/logo.png" alt="Logo"></a>
+                    <a href="index.html"><img src="{% static 'img/logo.png' %}" alt="Logo"></a>
                 </div>
                 <button class="ltn__utilize-close">×</button>
             </div>
@@ -531,8 +533,8 @@
                                 <div class="ltn__shop-details-img-gallery">
                                     <div class="ltn__shop-details-large-img">
                                         <div class="single-large-img">
-                                            <a href="img/product/1.png" data-rel="lightcase:myCollection">
-                                                <img src="img/product/1.png" alt="Image">
+                                            <a href="{{ product_detail.image.url }}" data-rel="lightcase:myCollection">
+                                                <img src="{{ product_detail.image.url }}" alt="Image">
                                             </a>
                                         </div>
                                         <div class="single-large-img">
@@ -566,29 +568,7 @@
                                             </a>
                                         </div>
                                     </div>
-                                    <div class="ltn__shop-details-small-img slick-arrow-2">
-                                        <div class="single-small-img">
-                                            <img src="img/product/1.png" alt="Image">
-                                        </div>
-                                        <div class="single-small-img">
-                                            <img src="img/product/2.png" alt="Image">
-                                        </div>
-                                        <div class="single-small-img">
-                                            <img src="img/product/3.png" alt="Image">
-                                        </div>
-                                        <div class="single-small-img">
-                                            <img src="img/product/4.png" alt="Image">
-                                        </div>
-                                        <div class="single-small-img">
-                                            <img src="img/product/5.png" alt="Image">
-                                        </div>
-                                        <div class="single-small-img">
-                                            <img src="img/product/6.png" alt="Image">
-                                        </div>
-                                        <div class="single-small-img">
-                                            <img src="img/product/7.png" alt="Image">
-                                        </div>
-                                    </div>
+
                                 </div>
                             </div>
                             <div class="col-md-6">
@@ -603,20 +583,17 @@
                                             <li class="review-total"> <a href="#"> ( 95 Reviews )</a></li>
                                         </ul>
                                     </div>
-                                    <h3>Vegetables Juices</h3>
+                                    <h3>{{ product_detail.title }}</h3>
                                     <div class="product-price">
-                                        <span>$49.00</span>
-                                        <del>$65.00</del>
+                                        <span>${{product_detail.discount_price}}.00</span>
+                                        <del>${{product_detail.price}}.00</del>
                                     </div>
                                     <div class="modal-product-meta ltn__product-details-menu-1">
                                         <ul>
                                             <li>
-                                                <strong>Categories:</strong> 
+                                                <strong>Categories:</strong>
                                                 <span>
-                                                    <a href="#">Parts</a>
-                                                    <a href="#">Car</a>
-                                                    <a href="#">Seat</a>
-                                                    <a href="#">Cover</a>
+                                                    <a href="#">{{ product_detail.ctg.name }}</a>
                                                 </span>
                                             </li>
                                         </ul>
@@ -636,38 +613,38 @@
                                             </li>
                                         </ul>
                                     </div>
-                                    <div class="ltn__product-details-menu-3">
-                                        <ul>
-                                            <li>
-                                                <a href="#" class="" title="Wishlist" data-toggle="modal" data-target="#liton_wishlist_modal">
-                                                    <i class="far fa-heart"></i>
-                                                    <span>Add to Wishlist</span>
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a href="#" class="" title="Compare" data-toggle="modal" data-target="#quick_view_modal">
-                                                    <i class="fas fa-exchange-alt"></i>
-                                                    <span>Compare</span>
-                                                </a>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                    <hr>
-                                    <div class="ltn__social-media">
-                                        <ul>
-                                            <li>Share:</li>
-                                            <li><a href="#" title="Facebook"><i class="fab fa-facebook-f"></i></a></li>
-                                            <li><a href="#" title="Twitter"><i class="fab fa-twitter"></i></a></li>
-                                            <li><a href="#" title="Linkedin"><i class="fab fa-linkedin"></i></a></li>
-                                            <li><a href="#" title="Instagram"><i class="fab fa-instagram"></i></a></li>
-                                            
-                                        </ul>
-                                    </div>
-                                    <hr>
-                                    <div class="ltn__safe-checkout">
-                                        <h5>Guaranteed Safe Checkout</h5>
-                                        <img src="img/icons/payment-2.png" alt="Payment Image">
-                                    </div>
+<!--                                    <div class="ltn__product-details-menu-3">-->
+<!--                                        <ul>-->
+<!--                                            <li>-->
+<!--                                                <a href="#" class="" title="Wishlist" data-toggle="modal" data-target="#liton_wishlist_modal">-->
+<!--                                                    <i class="far fa-heart"></i>-->
+<!--                                                    <span>Add to Wishlist</span>-->
+<!--                                                </a>-->
+<!--                                            </li>-->
+<!--                                            <li>-->
+<!--                                                <a href="#" class="" title="Compare" data-toggle="modal" data-target="#quick_view_modal">-->
+<!--                                                    <i class="fas fa-exchange-alt"></i>-->
+<!--                                                    <span>Compare</span>-->
+<!--                                                </a>-->
+<!--                                            </li>-->
+<!--                                        </ul>-->
+<!--                                    </div>-->
+<!--                                    <hr>-->
+<!--                                    <div class="ltn__social-media">-->
+<!--                                        <ul>-->
+<!--                                            <li>Share:</li>-->
+<!--                                            <li><a href="#" title="Facebook"><i class="fab fa-facebook-f"></i></a></li>-->
+<!--                                            <li><a href="#" title="Twitter"><i class="fab fa-twitter"></i></a></li>-->
+<!--                                            <li><a href="#" title="Linkedin"><i class="fab fa-linkedin"></i></a></li>-->
+<!--                                            <li><a href="#" title="Instagram"><i class="fab fa-instagram"></i></a></li>-->
+<!--                                            -->
+<!--                                        </ul>-->
+<!--                                    </div>-->
+<!--                                    <hr>-->
+<!--                                    <div class="ltn__safe-checkout">-->
+<!--                                        <h5>Guaranteed Safe Checkout</h5>-->
+<!--                                        <img src="img/icons/payment-2.png" alt="Payment Image">-->
+<!--                                    </div>-->
                                 </div>
                             </div>
                         </div>
@@ -821,27 +798,27 @@
                             <h4 class="ltn__widget-title ltn__widget-title-border">Top Rated Product</h4>
                             <ul>
                                 <li>
-                                    <div class="top-rated-product-item clearfix">
-                                        <div class="top-rated-product-img">
-                                            <a href="product-details.html"><img src="img/product/1.png" alt="#"></a>
-                                        </div>
-                                        <div class="top-rated-product-info">
-                                            <div class="product-ratting">
-                                                <ul>
-                                                    <li><a href="#"><i class="fas fa-star"></i></a></li>
-                                                    <li><a href="#"><i class="fas fa-star"></i></a></li>
-                                                    <li><a href="#"><i class="fas fa-star"></i></a></li>
-                                                    <li><a href="#"><i class="fas fa-star"></i></a></li>
-                                                    <li><a href="#"><i class="fas fa-star"></i></a></li>
-                                                </ul>
-                                            </div>
-                                            <h6><a href="product-details.html">Mixel Solid Seat Cover</a></h6>
-                                            <div class="product-price">
-                                                <span>$49.00</span>
-                                                <del>$65.00</del>
-                                            </div>
-                                        </div>
-                                    </div>
+<!--                                    <div class="top-rated-product-item clearfix">-->
+<!--                                        <div class="top-rated-product-img">-->
+<!--                                            <a href="product-details.html"><img src="{{ product_detail.image.url }}" alt="#"></a>-->
+<!--                                        </div>-->
+<!--                                        <div class="top-rated-product-info">-->
+<!--                                            <div class="product-ratting">-->
+<!--                                                <ul>-->
+<!--                                                    <li><a href="#"><i class="fas fa-star"></i></a></li>-->
+<!--                                                    <li><a href="#"><i class="fas fa-star"></i></a></li>-->
+<!--                                                    <li><a href="#"><i class="fas fa-star"></i></a></li>-->
+<!--                                                    <li><a href="#"><i class="fas fa-star"></i></a></li>-->
+<!--                                                    <li><a href="#"><i class="fas fa-star"></i></a></li>-->
+<!--                                                </ul>-->
+<!--                                            </div>-->
+<!--                                            <h6><a href="product-details.html">Mixel Solid Seat Cover</a></h6>-->
+<!--                                            <div class="product-price">-->
+<!--                                                <span>$49.00</span>-->
+<!--                                                <del>$65.00</del>-->
+<!--                                            </div>-->
+<!--                                        </div>-->
+<!--                                    </div>-->
                                 </li>
                                 <li>
                                     <div class="top-rated-product-item clearfix">
@@ -1523,7 +1500,7 @@
                                 <div class="row">
                                     <div class="col-12">
                                         <div class="modal-product-img">
-                                            <img src="img/product/1.png" alt="#">
+                                            <img src="{{ product_detail.image.url }}" alt="#">
                                         </div>
                                          <div class="modal-product-info">
                                             <h5><a href="product-details.html">Vegetables Juices</a></h5>
