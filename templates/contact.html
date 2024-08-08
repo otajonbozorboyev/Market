@@ -1,4 +1,5 @@
 <!doctype html>
+{% load static %}
 <html class="no-js" lang="zxx">
 
 <head>
@@ -12,13 +13,13 @@
     <!-- Place favicon.png in the root directory -->
     <link rel="shortcut icon" href="img/favicon.png" type="image/x-icon" />
     <!-- Font Icons css -->
-    <link rel="stylesheet" href="css/font-icons.css">
+    <link rel="stylesheet" href="{% static 'css/font-icons.css' %}">
     <!-- plugins css -->
-    <link rel="stylesheet" href="css/plugins.css">
+    <link rel="stylesheet" href="{% static 'css/plugins.css' %}">
     <!-- Main Stylesheet -->
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
     <!-- Responsive css -->
-    <link rel="stylesheet" href="css/responsive.css">
+    <link rel="stylesheet" href="{% static 'css/responsive.css' %}">
 </head>
 
 <body>
@@ -527,30 +528,28 @@
                 <div class="col-lg-4">
                     <div class="ltn__contact-address-item ltn__contact-address-item-3 box-shadow">
                         <div class="ltn__contact-address-icon">
-                            <img src="img/icons/10.png" alt="Icon Image">
+                            <img src="{% static 'img/icons/10.png' %}" alt="Icon Image">
                         </div>
                         <h3>Email Address</h3>
-                        <p>info@webmail.com <br>
-                            jobs@webexample.com</p>
+                        <p>{{ contact.email }}<br></p>
                     </div>
                 </div>
                 <div class="col-lg-4">
                     <div class="ltn__contact-address-item ltn__contact-address-item-3 box-shadow">
                         <div class="ltn__contact-address-icon">
-                            <img src="img/icons/11.png" alt="Icon Image">
+                            <img src="{% static 'img/icons/11.png' %}" alt="Icon Image">
                         </div>
                         <h3>Phone Number</h3>
-                        <p>+0123-456789 <br> +987-6543210</p>
+                        <p>{{ contact.phone }}</p>
                     </div>
                 </div>
                 <div class="col-lg-4">
                     <div class="ltn__contact-address-item ltn__contact-address-item-3 box-shadow">
                         <div class="ltn__contact-address-icon">
-                            <img src="img/icons/12.png" alt="Icon Image">
+                            <img src="{% static 'img/icons/12.png' %}" alt="Icon Image">
                         </div>
                         <h3>Office Address</h3>
-                        <p>18/A, New Born Town Hall <br>
-                            New York, US</p>
+                        <p>{{ contact.address }}</p>
                     </div>
                 </div>
             </div>

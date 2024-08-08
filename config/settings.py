@@ -43,7 +43,7 @@ INSTALLED_APPS = [
     "debug_toolbar",
     
     # local
-    # 'apps.contact',
+    'apps.contact',
     'apps.news',
     'apps.product',
     'apps.user',
